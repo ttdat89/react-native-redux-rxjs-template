@@ -7,4 +7,4 @@ import React from 'react';
 import {AppRegistry} from 'react-native';
 import App from './src/App'
 
-AppRegistry.registerComponent('MaizalProvider', () => App);
+AppRegistry.registerComponent('MyAss', () => App);
