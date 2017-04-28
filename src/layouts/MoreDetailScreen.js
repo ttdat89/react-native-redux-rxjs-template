@@ -7,18 +7,18 @@ import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native'
 import BaseScreen from './BaseScreen'
 import {RouteKey} from './../constants/index'
 
-class DetailScreen extends React.Component {
+class MoreDetailScreen extends React.Component {
 
   render() {
     const {userInfo, language} = this.props
     console.log(this.props)
     return <View style={{flex: 1, backgroundColor: '#d67ed2', justifyContent: 'center'}}>
       <View style={{alignItems: 'center'}}>
-        <Text>Detail Screen</Text>
+        <Text>More Detail Screen</Text>
       </View>
       <TouchableOpacity activeOpacity={0.5}
                         onPress={() => {
-                          this.props.onPush()
+                          this.props.onBackToHome()
                         }}>
         <View style={styles.button}>
           <Text style={styles.buttonText}>Go More Detail</Text>
@@ -28,9 +28,11 @@ class DetailScreen extends React.Component {
   }
 }
 
-export default connect(state => ({}), dispatch => ({
-  onPush: () => dispatch({type: 'push', routeName: RouteKey.MoreDetail, key:'more-detail'})
-}))(DetailScreen)
+export default connect(state => ({
+
+}), dispatch => ({
+  onBackToHome: () => dispatch({type: 'popToRoute', routeKey: RouteKey.Home})
+}))(MoreDetailScreen)
 
 const styles = StyleSheet.create({
   container: {

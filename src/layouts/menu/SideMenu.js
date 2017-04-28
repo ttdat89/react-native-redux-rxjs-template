@@ -13,7 +13,7 @@ import {
 } from 'react-native'
 import Divider from '../common/Divider';
 import {connect} from 'react-redux'
-import {push, resetToRoute} from '../../actions/routes'
+import {push, resetToRoute, popToRoot} from '../../actions/routes'
 import {RouteKey} from '../../constants/index'
 import {getText} from '../../utilities/localization'
 import {USER_LOGOUT} from './../../actions/user'
@@ -112,8 +112,8 @@ class SideMenu extends React.Component {
                     style={menuStyle.listItem}
                     onPress={() => {
                       // this.props.closeSideMenu()
-                      this.props.onResetToRoot({
-                        routeKey: RouteKey.Home,
+                      this.props.onPopToRoot({
+                        routeName: RouteKey.Home,
                         routeTitle: 'Main Menu'
                       });
                     }}
@@ -131,8 +131,8 @@ class SideMenu extends React.Component {
                     style={menuStyle.listItem}
                     onPress={() => {
                       // this.props.closeSideMenu()
-                      this.props.onResetToRoot({
-                        routeKey: RouteKey.UserProfile,
+                      this.props.onPopToRoot({
+                        routeName: RouteKey.UserProfile,
                         routeTitle: 'User Profile'
                       });
                     }}
@@ -150,11 +150,8 @@ class SideMenu extends React.Component {
                     style={menuStyle.listItem}
                     onPress={() => {
                       // this.props.closeSideMenu()
-                      this.props.onLogOut();
-                      this.props.onResetToRoot({
-                        routeKey: RouteKey.Login,
-                        routeTitle: ''
-                      });
+                      this.props.onLogOut()
+                      this.props.onPopToRoot()
                     }}>
                     <Image source={logout} style={menuStyle.profileIcon}/>
                     <Text style={menuStyle.listItemTitle}>{getText('log_out', language).toUpperCase()}</Text>
@@ -236,7 +233,7 @@ const menuStyle = StyleSheet.create({
 export default connect(state => ({
   language: state.app.language
 }), dispatch => ({
-  onPush: (routeKey) => dispatch(push(routeKey)),
-  onResetToRoot: (routeKey) => dispatch(resetToRoute(routeKey)),
+  onPush: (routeName) => dispatch(push(routeName)),
+  onPopToRoot: (routeName) => dispatch(popToRoot()),
   onLogOut: () => dispatch({type: USER_LOGOUT})
 }))(SideMenu)

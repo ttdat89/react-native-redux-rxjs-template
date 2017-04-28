@@ -7,12 +7,13 @@ import {NavigationActions} from 'react-navigation'
 import {TOKEN_IS_AVAILABLE, TOKEN_IS_NOT_AVAILABLE} from './../actions/app'
 
 export default function routes(state, action) {
-
   switch (action.type) {
     case 'push': {
       let newState = AppNavigator.router.getStateForAction(NavigationActions.navigate({
-        routeName: action.routeKey
+        key: action.key,
+        routeName: action.routeName
       }), state)
+      console.log('push ', newState)
       return (newState ? newState : state)
     }
     case 'pop': {
@@ -24,6 +25,17 @@ export default function routes(state, action) {
         ...state,
         index: 0,
         routes: [{key: 'Init', routeName: 'Login'}]
+      }
+    case 'popToRoute': {
+      console.log('current Route state', state)
+      let newState = AppNavigator.router.getStateForAction(NavigationActions.back({key: action.routeName}), state)
+      return (newState ? newState : state)
+    }
+    case 'popToRoot':
+      return {
+        ...state,
+        index: 0,
+        routes: [{routeName: 'Login'}]
       }
     case TOKEN_IS_AVAILABLE: {
       let newState = AppNavigator.router.getStateForAction(NavigationActions.navigate({

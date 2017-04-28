@@ -2,15 +2,17 @@
  * Created by Dat Tran on 4/21/17.
  */
 import React from 'react'
-import {View, Text} from 'react-native'
-import {StackNavigator, DrawerNavigator} from 'react-navigation';
+import {View, Text, Image} from 'react-native'
+import {StackNavigator, DrawerNavigator, TabNavigator} from 'react-navigation';
 import {enhance} from 'react-navigation-addons';
 
 import {RouteKey} from './../constants/index'
 import LoginScreen from './../layouts/LoginScreen'
 import HomeScreen from './../layouts/HomeScreen'
 import DetailScreen from './../layouts/DetailScreen'
-import SideMenu from '../layouts/menu/SideMenu'
+import MoreDetailScreen from './../layouts/MoreDetailScreen'
+import SideMenu from './../layouts/menu/SideMenu'
+import PendingAgentsScreen from './../layouts/PendingAgentsScreen'
 
 export const MainStack = enhance(StackNavigator)({
   Home: {
@@ -24,6 +26,12 @@ export const MainStack = enhance(StackNavigator)({
     screen: DetailScreen,
     navigationOptions: {
       headerTitle: 'Detail'
+    }
+  },
+  MoreDetail: {
+    screen: MoreDetailScreen,
+    navigationOptions: {
+      headerTitle: 'More Detail'
     }
   }
 }, {
@@ -41,12 +49,34 @@ export const MainStack = enhance(StackNavigator)({
   }
 })
 
-export const MainDrawer = DrawerNavigator({
+export const MainTab = TabNavigator({
   MainStack: {
     screen: MainStack,
     navigationOptions: {
-      drawerLabel: 'MAIN MENU',
+      tabBarLabel: 'Home',
+      tabBarIcon: <Image
+        resizeMode="contain"
+        style={{width: 30, height: 30}}
+        source={require('./../assets/images/card_icon.png')}/>
     }
+  },
+  PendingAgents: {
+    screen: PendingAgentsScreen,
+    navigationOptions: {
+      tabBarLabel: 'Pending Agents'
+    }
+  }
+}, {
+  tabBarPosition: 'bottom',
+  tabBarOptions: {
+    scrollEnabled: false,
+    showIcon: true
+  }
+})
+
+export const MainDrawer = DrawerNavigator({
+  MainTab: {
+    screen: MainTab
   }
 }, {
   drawerPosition: 'left',
@@ -59,7 +89,7 @@ export const AppNavigator = StackNavigator({
     screen: LoginScreen,
     gesturesEnabled: false,
   },
-  Home: {
+  MainDrawer: {
     key: 'Home',
     screen: MainDrawer,
     gesturesEnabled: false,

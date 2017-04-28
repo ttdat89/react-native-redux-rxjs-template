@@ -3,6 +3,7 @@
  */
 import {Alert, AsyncStorage, NativeModules} from 'react-native'
 import {Observable} from 'rxjs'
+import {RouteKey} from './../constants/index'
 import {
   login, USER_LOGIN, USER_LOGIN_SUCCESS,
   logout, USER_LOGOUT, USER_LOGOUT_SUCCESS
@@ -18,13 +19,14 @@ export default function (action$, store) {
     .switchMap((data) => Observable.concat(
       Observable.of({type: USER_LOGIN_SUCCESS, ...data}),
       Observable.of({type: SET_GLOBAL_INDICATOR_VISIBILITY, visible: true}),
-      Observable.of({type: SET_GLOBAL_INDICATOR_VISIBILITY, visible: false}).delay(2000),
-      Observable.of({type: 'push', routeKey: 'Home'})
+      Observable.of({type: SET_GLOBAL_INDICATOR_VISIBILITY, visible: false}).delay(1000),
+      Observable.of({type: 'push', routeName: RouteKey.Home, key: 'cc'})
     ))
 
   const logout$ = action$.ofType(USER_LOGOUT)
     .switchMap(() => logout())
     .mapTo({type: 'pop'})
+
   return Observable.merge(
     login$
   ).do(func => console.log('epic: ', func))

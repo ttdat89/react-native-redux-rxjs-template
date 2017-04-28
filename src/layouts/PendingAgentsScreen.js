@@ -5,32 +5,23 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native'
 import BaseScreen from './BaseScreen'
-import {RouteKey} from './../constants/index'
 
-class DetailScreen extends React.Component {
+class PendingAgentsScreen extends React.Component {
 
   render() {
     const {userInfo, language} = this.props
     console.log(this.props)
     return <View style={{flex: 1, backgroundColor: '#d67ed2', justifyContent: 'center'}}>
       <View style={{alignItems: 'center'}}>
-        <Text>Detail Screen</Text>
+        <Text>Pending Agents Screen</Text>
       </View>
-      <TouchableOpacity activeOpacity={0.5}
-                        onPress={() => {
-                          this.props.onPush()
-                        }}>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Go More Detail</Text>
-        </View>
-      </TouchableOpacity>
     </View>
   }
 }
 
-export default connect(state => ({}), dispatch => ({
-  onPush: () => dispatch({type: 'push', routeName: RouteKey.MoreDetail, key:'more-detail'})
-}))(DetailScreen)
+export default connect(state => ({
+
+}), dispatch => ({}))(PendingAgentsScreen)
 
 const styles = StyleSheet.create({
   container: {

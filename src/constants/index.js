@@ -12,5 +12,5 @@ export const RouteKey = {
   Login: 'Login',
   Home: 'Home',
   Detail: 'Detail',
-
+  MoreDetail: 'MoreDetail'
 }

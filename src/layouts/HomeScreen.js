@@ -45,7 +45,7 @@ class HomeScreen extends React.Component {
 export default connect(state => ({
   userInfo: state.user.userInfo
 }), dispatch => ({
-  onPush: () => dispatch({type: 'push', routeKey: RouteKey.Detail})
+  onPush: () => dispatch({type: 'push', routeName: RouteKey.Detail, key: 'detail'})
 }))(HomeScreen)
 
 const styles = StyleSheet.create({
