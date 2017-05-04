@@ -11,10 +11,9 @@
 	"dependencies": {
 		"moment": "^2.18.1",
 		"react": "16.0.0-alpha.6",
-		"react-native": "0.43.4",
+		"react-native": "0.44.0",
 		"react-native-spinkit": "^1.0.2",
-		"react-navigation": "^1.0.0-beta.8",
-		"react-navigation-addons": "https://github.com/satya164/react-navigation-addons",
+		"react-navigation": "^1.0.0-beta.9",
 		"react-redux": "^5.0.4",
 		"redux": "^3.6.0",
 		"redux-observable": "^0.14.1",

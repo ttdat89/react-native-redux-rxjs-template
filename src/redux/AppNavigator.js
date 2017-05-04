@@ -4,7 +4,6 @@
 import React from 'react'
 import {View, Text, Image} from 'react-native'
 import {StackNavigator, DrawerNavigator, TabNavigator} from 'react-navigation';
-import {enhance} from 'react-navigation-addons';
 
 import {RouteKey} from './../constants/index'
 import LoginScreen from './../layouts/LoginScreen'
@@ -14,7 +13,7 @@ import MoreDetailScreen from './../layouts/MoreDetailScreen'
 import SideMenu from './../layouts/menu/SideMenu'
 import PendingAgentsScreen from './../layouts/PendingAgentsScreen'
 
-export const MainStack = enhance(StackNavigator)({
+export const MainStack = StackNavigator({
   Home: {
     key: 'home',
     screen: HomeScreen,
