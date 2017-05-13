@@ -6,12 +6,12 @@ import {View, Text, Image} from 'react-native'
 import {StackNavigator, DrawerNavigator, TabNavigator} from 'react-navigation';
 
 import {RouteKey} from './../constants/index'
-import LoginScreen from './../layouts/LoginScreen'
-import HomeScreen from './../layouts/HomeScreen'
-import DetailScreen from './../layouts/DetailScreen'
-import MoreDetailScreen from './../layouts/MoreDetailScreen'
-import SideMenu from './../layouts/menu/SideMenu'
-import PendingAgentsScreen from './../layouts/PendingAgentsScreen'
+import LoginScreen from '../components/LoginScreen'
+import HomeScreen from '../components/HomeScreen'
+import DetailScreen from '../components/DetailScreen'
+import MoreDetailScreen from '../components/MoreDetailScreen'
+import SideMenu from '../components/menu/SideMenu'
+import PendingAgentsScreen from '../components/PendingAgentsScreen'
 
 export const MainStack = StackNavigator({
   Home: {

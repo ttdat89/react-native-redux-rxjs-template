@@ -12,5 +12,6 @@ export const RouteKey = {
   Login: 'Login',
   Home: 'Home',
   Detail: 'Detail',
-  MoreDetail: 'MoreDetail'
+  MoreDetail: 'MoreDetail',
+  UserProfile: 'UserProfile'
 }

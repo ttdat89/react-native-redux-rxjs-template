@@ -8,12 +8,10 @@ import {
 import {Provider} from 'react-redux'
 import store from './redux/store'
 import {connect} from 'react-redux'
-import MainLayout from './layouts/MainLayout'
-import Bootstrap from './layouts/Bootstrap'
+import MainLayout from './components/MainLayout'
+import Bootstrap from './components/Bootstrap'
 // import {APP_START_UP} from './actions/user'
 // import BootstrapViewContainer from './mobile/containers/BootstrapViewContainer'
-// import NotificationManager from './utilities/NotificationManager'
-// import QuickbloxManager from './utilities/QuickbloxManager'
 import {requestPermissions} from './actions/app'
 
 class App extends React.Component {
@@ -22,11 +20,6 @@ class App extends React.Component {
     this.state = {
       showApp: true
     }
-
-    // NotificationManager.instance.init()
-    // NotificationManager.instance.registerNotification()
-
-    // QuickbloxManager.instance.init()
 
     Platform.OS === 'android' && requestPermissions()
   }

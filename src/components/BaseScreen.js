@@ -13,6 +13,4 @@ class BaseScreen extends React.Component {
 
 export default connect(state => ({
   language: state.app.language
-}), dispatch => ({
-
-}))(BaseScreen)
+}), dispatch => ({}))(BaseScreen)

@@ -10,7 +10,7 @@ import {connect} from 'react-redux'
 import {addNavigationHelpers} from 'react-navigation';
 
 import {AppNavigator} from './../redux/AppNavigator'
-import IndicatorDialog from './../layouts/common/IndicatorDialog'
+import IndicatorDialog from './common/IndicatorDialog'
 import {pop} from './../actions/routes'
 
 class MainLayout extends React.Component {
