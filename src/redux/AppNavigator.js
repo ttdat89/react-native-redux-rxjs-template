@@ -15,7 +15,6 @@ import PendingAgentsScreen from '../components/PendingAgentsScreen'
 
 export const MainStack = StackNavigator({
   Home: {
-    key: 'home',
     screen: HomeScreen,
     navigationOptions: {
       headerTitle: 'Home'
@@ -84,12 +83,10 @@ export const MainDrawer = DrawerNavigator({
 
 export const AppNavigator = StackNavigator({
   Login: {
-    key: RouteKey.Login,
     screen: LoginScreen,
     gesturesEnabled: false,
   },
   MainDrawer: {
-    key: 'Home',
     screen: MainDrawer,
     gesturesEnabled: false,
     navigationOptions: {
