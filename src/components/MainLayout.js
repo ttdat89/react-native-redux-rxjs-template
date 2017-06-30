@@ -4,7 +4,7 @@
 import React from 'react'
 import {
   View, StyleSheet, StatusBar,
-  Platform, BackAndroid
+  Platform, BackHandler
 } from 'react-native'
 import {connect} from 'react-redux'
 import {addNavigationHelpers} from 'react-navigation';
@@ -16,7 +16,7 @@ import {pop} from './../actions/routes'
 class MainLayout extends React.Component {
 
   componentDidMount() {
-    Platform.OS === 'android' && BackAndroid.addEventListener('hardwareBackPress', () => {
+    Platform.OS === 'android' && BackHandler.addEventListener('hardwareBackPress', () => {
       const comp = AppNavigator.router.getComponentForState(this.props.navigationState)
 
       console.log(this.props.navigationState, comp.displayName)
