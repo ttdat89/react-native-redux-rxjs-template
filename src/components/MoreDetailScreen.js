@@ -31,7 +31,7 @@ class MoreDetailScreen extends React.Component {
 export default connect(state => ({
 
 }), dispatch => ({
-  onBackToHome: () => dispatch({type: 'popToRoute', routeKey: RouteKey.Home})
+  onBackToHome: () => dispatch({type: 'resetToRoute', routeName: RouteKey.Home})
 }))(MoreDetailScreen)
 
 const styles = StyleSheet.create({

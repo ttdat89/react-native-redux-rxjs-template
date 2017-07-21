@@ -66,9 +66,12 @@ export const MainTab = TabNavigator({
   }
 }, {
   tabBarPosition: 'bottom',
+  swipeEnabled: false,
+  backBehavior: 'none',
   tabBarOptions: {
-    scrollEnabled: false,
-    showIcon: true
+    indicatorStyle: {
+      backgroundColor: 'white'
+    }
   }
 })
 

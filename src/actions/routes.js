@@ -1,6 +1,8 @@
 /**
  * Created by Dat Tran on 12/21/16.
  */
+import {RouteKey} from './../constants/index'
+
 export function push({routeName, key}) {
   return {
     type: 'push',
@@ -28,10 +30,11 @@ export function popToRoot() {
   }
 }
 
-export function resetToRoute({routeKey, routeTitle}) {
+export function resetToRoute({routeName, params}) {
   return {
-    type: 'reset',
-    routeKey,
-    routeTitle
+    type: 'resetToRoute',
+    routeName,
+    key: RouteKey.Login,
+    params
   }
 }

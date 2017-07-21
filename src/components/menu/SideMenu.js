@@ -17,6 +17,12 @@ import {push, resetToRoute, popToRoot} from '../../actions/routes'
 import {RouteKey} from '../../constants/index'
 import {getText} from '../../utilities/localization'
 import {USER_LOGOUT} from './../../actions/user'
+import Svg, {
+  LinearGradient,
+  Rect,
+  Defs,
+  Stop
+} from 'react-native-svg'
 
 const {width, height} = Dimensions.get('window')
 const background = require('../../assets/images/menu/background.png')
@@ -98,69 +104,69 @@ class SideMenu extends React.Component {
     return (
 
       <View style={menuStyle.container}>
-        <ScrollView>
-          <View style={menuStyle.background}>
-            <Image source={background} style={{width: '100%'}}>
-              <View style={menuStyle.logoWrap}>
-                <Image source={logo} style={menuStyle.logo}
-                       resizeMode='contain'/>
-              </View>
-              <View style={menuStyle.content}>
-                <View >
-                  <TouchableOpacity
-                    key={1}
-                    style={menuStyle.listItem}
-                    onPress={() => {
-                      // this.props.closeSideMenu()
-                      this.props.onPopToRoot({
-                        routeName: RouteKey.Home,
-                        routeTitle: 'Main Menu'
-                      });
-                    }}
-                  >
-                    <Image source={healthstats} style={menuStyle.healthStatsIcon}/>
-                    <View>
-                      <Text style={menuStyle.listItemTitle}>{getText('main_menu', language).toUpperCase()}</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <MenuDivider/>
-                </View>
-                <View>
-                  <TouchableOpacity
-                    key={1}
-                    style={menuStyle.listItem}
-                    onPress={() => {
-                      // this.props.closeSideMenu()
-                      this.props.onPopToRoot({
-                        routeName: RouteKey.UserProfile,
-                        routeTitle: 'User Profile'
-                      });
-                    }}
-                  >
-                    <Image source={profile} style={menuStyle.profileIcon}/>
-                    <View >
-                      <Text style={menuStyle.listItemTitle}>{getText('profile', language).toUpperCase()}</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <MenuDivider/>
-                </View>
-                <View >
-                  <TouchableOpacity
-                    key={1}
-                    style={menuStyle.listItem}
-                    onPress={() => {
-                      // this.props.closeSideMenu()
-                      this.props.onLogOut()
-                      this.props.onPopToRoot()
-                    }}>
-                    <Image source={logout} style={menuStyle.profileIcon}/>
-                    <Text style={menuStyle.listItemTitle}>{getText('log_out', language).toUpperCase()}</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Image>
+        <View style={{position: 'absolute', width: '100%', height: '100%'}}>
+          <Svg
+            height={height}
+            width={width}>
+            <Defs>
+              <LinearGradient id="grad" x1="0" y1="0" x2="0" y2={height}>
+                <Stop offset="0" stopColor={'#0e4ebb'}/>
+                <Stop offset="1" stopColor={'#46bfdd'}/>
+              </LinearGradient>
+            </Defs>
+            <Rect x="0"
+                  y="0"
+                  height={height}
+                  width={width}
+                  fill="url(#grad)"/>
+          </Svg>
+        </View>
+        <ScrollView style={{width: '100%'}}>
+          <View style={menuStyle.content}>
+            <View>
+              <TouchableOpacity
+                key={1}
+                style={menuStyle.listItem}
+                onPress={() => {
+                  this.props.onPopToRoot({
+                    routeName: RouteKey.Home,
+                    routeTitle: 'Main Menu'
+                  });
+                }}>
+                <Image source={healthstats} style={menuStyle.itemIcon}/>
+                <Text style={menuStyle.listItemTitle}>{getText('main_menu', language).toUpperCase()}</Text>
+              </TouchableOpacity>
+              <MenuDivider/>
+            </View>
+            <View>
+              <TouchableOpacity
+                key={1}
+                style={menuStyle.listItem}
+                onPress={() => {
+                  this.props.onPopToRoot({
+                    routeName: RouteKey.UserProfile,
+                    routeTitle: 'User Profile'
+                  });
+                }}>
+                <Image source={profile} style={menuStyle.itemIcon}/>
+                <Text style={menuStyle.listItemTitle}>{getText('profile', language).toUpperCase()}</Text>
+              </TouchableOpacity>
+              <MenuDivider/>
+            </View>
+            <View>
+              <TouchableOpacity
+                key={1}
+                style={menuStyle.listItem}
+                onPress={() => {
+                  this.props.onLogOut()
+                  this.props.onPopToRoot()
+                }}>
+                <Image source={logout} style={menuStyle.itemIcon}/>
+                <Text style={menuStyle.listItemTitle}>{getText('log_out', language).toUpperCase()}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </ScrollView >
+        </ScrollView>
       </View>
     )
   }
@@ -175,7 +181,6 @@ const menuStyle = StyleSheet.create({
     justifyContent: 'center',
   },
   logoWrap: {
-    position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -189,7 +194,7 @@ const menuStyle = StyleSheet.create({
     marginTop: 50
   },
   listItem: {
-    height: 40,
+    height: 44,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center'
@@ -200,32 +205,16 @@ const menuStyle = StyleSheet.create({
     flexShrink: 1,
     backgroundColor: 'rgba(0,0,0,0)',
   },
-  healthStatsIcon: {
-    width: 22,
-    height: 18,
-    marginRight: 40,
-    marginLeft: 40,
-  },
-  bookingIcon: {
-    width: 22,
-    height: 16,
-    marginRight: 40,
-    marginLeft: 40,
-  },
-  teleIcon: {
+  itemIcon: {
     width: 22,
     height: 28,
     marginRight: 40,
     marginLeft: 40,
-  },
-  profileIcon: {
-    width: 23,
-    height: 23,
-    marginRight: 40,
-    marginLeft: 40,
+    resizeMode: 'contain'
   },
   separator: {
-    width: 210
+    flex: 1,
+    marginLeft: 102
   }
 });
 
