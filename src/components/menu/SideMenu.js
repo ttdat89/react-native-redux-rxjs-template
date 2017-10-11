@@ -105,9 +105,7 @@ class SideMenu extends React.Component {
 
       <View style={menuStyle.container}>
         <View style={{position: 'absolute', width: '100%', height: '100%'}}>
-          <Svg
-            height={height}
-            width={width}>
+          <Svg style={{width: '100%', height: '100%'}}>
             <Defs>
               <LinearGradient id="grad" x1="0" y1="0" x2="0" y2={height}>
                 <Stop offset="0" stopColor={'#0e4ebb'}/>
