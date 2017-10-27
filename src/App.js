@@ -10,8 +10,6 @@ import store from './redux/store'
 import {connect} from 'react-redux'
 import MainLayout from './components/MainLayout'
 import Bootstrap from './components/Bootstrap'
-// import {APP_START_UP} from './actions/user'
-// import BootstrapViewContainer from './mobile/containers/BootstrapViewContainer'
 import {requestPermissions} from './actions/app'
 
 class App extends React.Component {
@@ -29,9 +27,7 @@ class App extends React.Component {
   }
 }
 
-const ConnectedApp = connect(state => ({}), dispatch => ({
-  // onCheckAccessTokenAvailable: (callback) => dispatch({type: APP_START_UP, callback}),
-}))(App)
+const ConnectedApp = connect(state => ({})))(App)
 
 export default function provider() {
   return <Provider store={store}>
