@@ -42,8 +42,7 @@ export const MainStack = StackNavigator({
       paddingTop: 20,
       height: 72,
     },
-    headerTintColor: 'white',
-    gesturesEnabled: false
+    headerTintColor: 'white'
   }
 })
 
@@ -86,15 +85,10 @@ export const MainDrawer = DrawerNavigator({
 
 export const AppNavigator = StackNavigator({
   Login: {
-    screen: LoginScreen,
-    gesturesEnabled: false,
+    screen: LoginScreen
   },
   MainDrawer: {
-    screen: MainDrawer,
-    gesturesEnabled: false,
-    navigationOptions: {
-      gesturesEnabled: false
-    }
+    screen: MainDrawer
   }
 }, {
   headerMode: 'none'
