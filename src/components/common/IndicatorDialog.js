@@ -1,9 +1,10 @@
 /**
  * Created by Dat Tran on 1/25/17.
  */
-import React, {PropTypes} from 'react'
+import React from 'react'
 import {View, Text, StyleSheet, Modal, TouchableOpacity} from 'react-native'
 import Spinner from 'react-native-spinkit'
+import PropTypes from 'prop-types';
 
 export default class IndicatorDialog extends React.Component {
     static propTypes = {
