@@ -38,9 +38,7 @@ export const MainStack = StackNavigator({
       color: 'white'
     },
     headerStyle: {
-      backgroundColor: '#1b59d0',
-      paddingTop: 20,
-      height: 72,
+      backgroundColor: '#1b59d0'
     },
     headerTintColor: 'white'
   }
