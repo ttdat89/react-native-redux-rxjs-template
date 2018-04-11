@@ -4,17 +4,20 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import reducers from './reducers'
 import {createEpicMiddleware} from 'redux-observable';
-// import {composeWithDevTools} from 'remote-redux-devtools'
-
 import initialState from './initialState'
 import epic from './../actions/epic';
+import {createReactNavigationReduxMiddleware} from 'react-navigation-redux-helpers';
 
 /**
  *  Redux Store configuration
  */
 
 const middlewares = [
-  createEpicMiddleware(epic)
+  createEpicMiddleware(epic),
+  createReactNavigationReduxMiddleware(
+    'root',
+    state => state.navigationState
+  )
 ];
 
 //create store

@@ -25,15 +25,9 @@ import Svg, {
 } from 'react-native-svg'
 
 const {width, height} = Dimensions.get('window')
-const background = require('../../assets/images/menu/background.png')
-const booking = require('../../assets/images/menu/booking.png')
 const healthstats = require('../../assets/images/menu/healthstats.png')
 const profile = require('../../assets/images/menu/profile.png')
-const tele = require('../../assets/images/menu/tele.png')
-const logo = require('../../assets/images/menu/logo.png')
-const separator = require('../../assets/images/menu/separator.png')
 const logout = require('../../assets/images/logout.png')
-const setting = require('../../assets/images/settings.png')
 
 class SideMenuItem extends React.Component {
   constructor(props) {

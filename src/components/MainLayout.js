@@ -12,6 +12,9 @@ import {addNavigationHelpers} from 'react-navigation';
 import {AppNavigator} from './../redux/AppNavigator'
 import IndicatorDialog from './common/IndicatorDialog'
 import {pop} from './../actions/routes'
+import {createReduxBoundAddListener} from 'react-navigation-redux-helpers'
+
+const addListener = createReduxBoundAddListener('root')
 
 class MainLayout extends React.Component {
 
@@ -43,6 +46,7 @@ class MainLayout extends React.Component {
         <AppNavigator navigation={addNavigationHelpers({
           dispatch: this.props.dispatch,
           state: this.props.navigationState,
+          addListener
         })}/>
       </View>
       {showGlobalIndicator && <IndicatorDialog message={'Please wait.'}/>}
